@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import CourseCard from './CourseCard';
 
-export default function ResultsDisplay({ results }) {
+export default function ResultsDisplay({ results, studentName }) {
   const [selectedCourses, setSelectedCourses] = useState(
     Object.keys(results || {}).reduce((acc, course) => {
       acc[course] = true;
@@ -65,6 +65,13 @@ export default function ResultsDisplay({ results }) {
 
   return (
     <div className="mt-6">
+      {studentName && (
+        <div className="mb-4 pb-3 border-b border-slate-200 dark:border-slate-700 print:border-slate-300">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100 print:text-slate-900">
+            Student: {studentName}
+          </h2>
+        </div>
+      )}
       <div className="flex justify-between items-center mb-4 print:hidden">
         <div className="text-sm text-slate-600 dark:text-slate-400">
           <span className="font-semibold">{selectedCount}</span> of{' '}
